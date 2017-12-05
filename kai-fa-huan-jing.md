@@ -27,11 +27,11 @@ sudo apt install python3-pip
 
 ###### Arch
 
-python 
+python
 
-相较于arch
+相较于其他arch
 
-sudo  pacman -S python 
+sudo  pacman -S python
 
 ###### 测试是否安装成功
 
