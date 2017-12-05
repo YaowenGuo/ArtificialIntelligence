@@ -29,10 +29,19 @@ sudo apt install python3-pip
 
 python
 
-相较于其他arch
+相较于其他版本，arch的软件包是非常激进的，总是使用最新发布的软件包，这也是我喜欢的地方。所以arch默认的python版本是python3。
+
+python3安装
 
 sudo  pacman -S python
 
+pip安装
+
+sudo pacman -S python-pip
+
+NumPy 安装
+
+sudo pip install numpy
 ###### 测试是否安装成功
 
 先进入python环境，然后导入numpy包即可
