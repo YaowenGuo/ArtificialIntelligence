@@ -17,13 +17,35 @@ sudo apt install python3
 > pip安装 
 
 pip 是 python 的模块安装的命令行工具，能够自动从官方的库中安装其他模块。
-sudo apt sudo apt-get install python3-pip
+sudo apt install python3-pip
 
 安装了pip之后 pip 在ubuntu的命令名称是 pip3
 
 > NumPy安装
 NumPy 是一个
 sudo pip3 install numpy
+
+有些教程上面建议使用Anaconda或者Canopy，或者Python(x,y)来安装python科学计算库，这些软件库提供了一个用于科学计算的python库打包。能够方便的安装各种计算模块，省心省力。对与我这种不愿意安装用不到的软件包的强迫症来说，我还是愿意单独安装需要的软件包，这也意味着要自己解决一些软件问题。
+
+###### 测试是否安装成功
+
+先进入python环境，然后导入numpy包即可
+```shell
+$ python3
+>> import numpy
+
+```
+如果没有任何反馈，说明已经安装成功了，否则，就是没有安装成功，则会收到如下反馈。
+```
+Traceback (most recent call last): 
+   File "<pyshell#0>", line 1, in <module> 
+      import numpy 
+ImportError: No module named 'numpy'
+```
+
+
+
+
 
 
 
