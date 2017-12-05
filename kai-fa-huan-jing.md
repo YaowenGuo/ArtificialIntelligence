@@ -2,52 +2,54 @@
 
 除了能够使用python编程之外，一些模块在机器学习中经常用到，例如 Numpy用于处理矩阵运算。不同的人学习习惯不一样，有些人喜欢学完基础再学应用，有些人习惯先动手开始实践，遇到没有见过的知识点再去学习。这里将常用 Module 放到附录中，方便想要先学这些基础工具包的人，也方便需要的时候快速查看。然而事实并不总是如此，因为许多时候，你也不知道要学的内容里有哪些是先决条件。只有遇到了才知道要用到。所以在使用的时候，会加以说明。
 
-
 ### python
 
 python3已经出现有几年的时间了，使用python3更面向未来。如果你看到哪个资料上仍旧提醒使用python2，建议看一下资料的发表时间。
 
-
-
 ###### ubuntu
+
 > python
 
 sudo apt install python3
 
-> pip安装 
+> pip安装
 
-pip 是 python 的模块安装的命令行工具，能够自动从官方的库中安装其他模块。
+pip 是 python 的模块安装的命令行工具，能够自动从官方的库中安装其他模块。  
 sudo apt install python3-pip
 
 安装了pip之后 pip 在ubuntu的命令名称是 pip3
 
-> NumPy安装
-NumPy 是一个
-sudo pip3 install numpy
+> NumPy安装  
+> NumPy 是一个  
+> sudo pip3 install numpy
 
-有些教程上面建议使用Anaconda或者Canopy，或者Python(x,y)来安装python科学计算库，这些软件库提供了一个用于科学计算的python库打包。能够方便的安装各种计算模块，省心省力。对与我这种不愿意安装用不到的软件包的强迫症来说，我还是愿意单独安装需要的软件包，这也意味着要自己解决一些软件问题。
+有些教程上面建议使用Anaconda或者Canopy，或者Python\(x,y\)来安装python科学计算库，这些软件库提供了一个用于科学计算的python库打包。能够方便的安装各种计算模块，省心省力。对与我这种不愿意安装用不到的软件包的强迫症来说，我还是愿意单独安装需要的软件包，这也意味着要自己解决一些软件问题。
+
+###### Arch
+
+python 
+
+相较于arch
+
+sudo  pacman -S python 
 
 ###### 测试是否安装成功
 
 先进入python环境，然后导入numpy包即可
+
 ```shell
 $ python3
 >> import numpy
-
 ```
+
 如果没有任何反馈，说明已经安装成功了，否则，就是没有安装成功，则会收到如下反馈。
+
 ```
 Traceback (most recent call last): 
    File "<pyshell#0>", line 1, in <module> 
       import numpy 
 ImportError: No module named 'numpy'
 ```
-
-
-
-
-
-
 
 
 
