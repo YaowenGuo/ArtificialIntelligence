@@ -14,6 +14,8 @@ Samuel的定义可以回溯到50年代，他编写了一个西洋棋程序。这
 目前存在着几种不同的学习算法。主要的两种是：
 
 * 监督学习（supervised learning）
+   - regression problem
+   - classification" problems
 * 无监督学习
 
 监督学习这个想法是指，我们将教计算机如何去完成任务，而在无监督学习中，我们打算让它自己进行学习。  
