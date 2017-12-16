@@ -3,6 +3,7 @@
 * [Introduction](README.md)
 * [MachineLearning](machinelearning.md)
   * [无监督学习](machinelearning/wu-jian-du-xue-xi.md)
+  * [Model and Cost Function](machinelearning/model-and-cost-function.md)
 * [开发环境](kai-fa-huan-jing.md)
 * [附录](fu-lu.md)
   * [Numpy教程](fu-lu/numpyjiao-cheng.md)
