@@ -149,7 +149,7 @@ temp1 := \theta_1 - \alpha\frac{\partial}{\partial\theta_1} J(\theta0, \theta1)\
 为了更好的理解整个过程，以及在演示过程中，方便计算。需要对梯度下降算法做一个简化，令$$\\\theta_0 = 0\\$$，这时$$\\\begin{gather}\min_{\theta_0, \theta_1}J(\theta_0, \theta_1) \end{gather}\\$$就会简化成$$\\\begin{gather}\min_{\theta_1}J(\theta_1) \end{gather}\\$$。$$\\\theta_1\\$$是一个实数，这样的话，可以画一条曲线表示函数J,假如它是这样：
 ![](/assets/gradient_descent6.png)
 梯度算法第一步就是随便选一个点对$$\\\theta_1\\$$初始化，然后从这个点出发，进行梯度下降。
-要做的事情就是不断的更新$$\\\theta_1\\$$等于$$\\\theta_1\\$$减去$$\\\alpha\\$$倍的$$\\\frac{d}{d\theta_1}J(\theta_1)\\$$ 
+要做的事情就是不断的更新$$\\\theta_1\\$$等于$$\\\theta_1\\$$减去$$\\\alpha\\$$倍的$$\\\frac{d}{d\theta_1}J(\theta_1)\\$$ "plugins": 
 
 
 
