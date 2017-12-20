@@ -83,8 +83,73 @@ h<sub>θ</sub>(x)是一条关于x的函数，而J(θ1）是关于θ1的函数。
 
 梯度下降算法的核心思想：
 对于函数J(θ0， θ1)，
-要求得：$$$$
+要求得：$$\\\begin{gather}
+\min_{\theta0, \theta1}J(\theta0, \theta1)
+\end{gather}\\$$
 
+Outline:
+- Start with some $$\\\theta_0, \theta_1\\$$
+- Keep changing $$\\\theta_0, \theta_1\\$$ to reduce $$\\J(\theta_0, \theta_1)\\$$ until we hopefully end up at a minumum。
+
+首先要做的，就是对$$\\\theta_0, \theta_1\\$$进行一些初步的猜测，它们到底是什么其实并不重要，但通常将$$\\\theta_0 \\$$设为0，将$$\\\theta_1\\$$也设为0。然后就是不停的改变$$\\\theta_0\\$$和$$\\\theta_1\\$$，试图通过这种改变使得$$\\J(\theta_0, \theta_1)变小\\$$，直到找到J的最小值，或许是局部最小值。下面的图片演示了梯度下降的工作过程。
+![](/assets/gradient_descent1.png)
+水平轴为$$\\\theta_0\\$$和$$\\\theta_1\\$$，函数J在垂直坐标轴上，图形表面高度则为J的值，想要求得函数J的最小值（局部最小值），需要$$\\\theta_0\\$$和$$\\\theta_1\\$$从某个值出发，所以想象一下对$$\\\theta_0\\$$和$$\\\theta_1\\$$赋予某个初值，也就是对应函数J曲面上的某一点出发
+![](/assets/gradient_descent2.png)
+所以$$\\\theta_0\\$$和$$\\\theta_1\\$$初始值的寻去是多少无所谓，在这个图像中，可以将凸起的部分想象成山峰，此时你正在上的这一点上，在梯度下降算法中，我们要做的就是环顾四周，并问自己，我想在改点上用小步尽快下山，我需要将小碎步迈向什么方向？当然是最陡峭的方向，大约在这个方向
+![](/assets/gradient_descent3.png)
+迈出一步后，现在你在山上新的起点上，需要做的就是再次环顾四周，然后思考，我应该朝哪个方向走才能尽快下上，如此重复。一步一步走，知道到达局部最低点的位置。
+![](/assets/gradient_descent4.png)
+
+这种下降有一个有趣的特点，对于不同的起始值，可能得到不同的局部最小值。例如从另一个位置出发，开始使用梯度下降算法。将会得到不同的局部最优值。
+![](/assets/gradient_descent3.png)
+起始点不同，可能会得到一个不同的局部最优解。
+
+##### Gradient descent algorithm
+repeat until convergence {
+$$\\\begin{gather}
+\theta_j := \theta_j - \alpha\frac{\partial}{\partial\theta_j} J(\theta0, \theta1) \qquad   (for\quad  j = 0\quad and\quad j = 1)
+\end{gather}\\$$
+}
+
+重复上面的步骤，跟新$$\\\theta_j\\$$直到收敛，
+
+注意点：
+- := 表示赋值，与a = b 不同。
+- α 是一个数字，被称为学习速率(learning rate)。在梯度下降算法中，它控制了我们下山时，迈出多大的步子，如果α很大，相应地在梯度下降过程中，我们试图使用大步下山，如果α很小，那么我们会迈着很小的碎步下山。
+- 在梯度下降过程中，需要同时更新$$\\\theta_0, \theta_1\\$$。这意味着在计算中需要这样计算：
+
+$$\\\begin{gather}
+temp0 := \theta_0 - \alpha\frac{\partial}{\partial\theta_0} J(\theta0, \theta1) \\
+
+temp1 := \theta_1 - \alpha\frac{\partial}{\partial\theta_1} J(\theta0, \theta1)\\
+
+\theta_0 := temp0 \\
+
+\theta_1 := temp1
+
+\end{gather}\\$$
+
+而不是
+$$\\\begin{gather}
+temp0 := \theta_0 - \alpha\frac{\partial}{\partial\theta_0} J(\theta0, \theta1) \\
+
+\theta_0 := temp0 \\
+
+temp1 := \theta_1 - \alpha\frac{\partial}{\partial\theta_1} J(\theta0, \theta1)\\
+
+\theta_1 := temp1
+
+\end{gather}\\$$
+这种错误是$$\\\theta_0, \theta_1\\$$没有同步更新，先更新了$$\\\theta_0$$，然后将更新后的$$\\\theta_0$$用于更新$$\\\theta_1$$。这种计算并不具有梯度下降的性质。
+
+##### 梯度下降算法更新过程的意义
+目标：
+- 对α和偏导数部分有一个更直观的认知，这两部分有什么用，以及为什么把这两部分放到一起时，整个过程是有意义的。
+
+为了更好的理解整个过程，以及在演示过程中，方便计算。需要对梯度下降算法做一个简化，令$$\\\theta_0 = 0\\$$，这时$$\\\begin{gather}\min_{\theta_0, \theta_1}J(\theta_0, \theta_1) \end{gather}\\$$就会简化成$$\\\begin{gather}\min_{\theta_1}J(\theta_1) \end{gather}\\$$。$$\\\theta_1\\$$是一个实数，这样的话，可以画一条曲线表示函数J,假如它是这样：
+![](/assets/gradient_descent6.png)
+梯度算法第一步就是随便选一个点对$$\\\theta_1\\$$初始化，然后从这个点出发，进行梯度下降。
+要做的事情就是不断的更新$$\\\theta_1\\$$等于$$\\\theta_1\\$$减去$$\\\alpha\\$$倍的$$\\\frac{d}{d\theta_1}J(\theta_1)\\$$ 
 
 
 
