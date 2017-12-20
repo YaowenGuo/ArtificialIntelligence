@@ -148,8 +148,42 @@ temp1 := \theta_1 - \alpha\frac{\partial}{\partial\theta_1} J(\theta0, \theta1)\
 
 为了更好的理解整个过程，以及在演示过程中，方便计算。需要对梯度下降算法做一个简化，令$$\\\theta_0 = 0\\$$，这时$$\\\begin{gather}\min_{\theta_0, \theta_1}J(\theta_0, \theta_1) \end{gather}\\$$就会简化成$$\\\begin{gather}\min_{\theta_1}J(\theta_1) \end{gather}\\$$。$$\\\theta_1\\$$是一个实数，这样的话，可以画一条曲线表示函数J,假如它是这样：
 ![](/assets/gradient_descent6.png)
+
 梯度算法第一步就是随便选一个点对$$\\\theta_1\\$$初始化，然后从这个点出发，进行梯度下降。
-要做的事情就是不断的更新$$\\\theta_1\\$$等于$$\\\theta_1\\$$减去$$\\\alpha\\$$倍的$$\\\frac{d}{d\theta_1}J(\theta_1)\\$$ "plugins": 
+![](/assets/gradient_descent7.png)
 
+要做的事情就是不断的更新$$\\\theta_1\\$$等于$$\\\theta_1\\$$减去$$\\\alpha\\$$倍的$$\\\frac{d}{d\theta_1}J(\theta_1)\\$$ (这里将原来的偏导数符号$$\\\partial\\$$改正了导数符号d，这是因为在单变量里，这两个表示是等价的)。求导的几何意义就是曲线的斜率，对于曲线上的某一点，取这一点的切线，该切线的斜率就是这点的导数值。
+   改点中，曲线斜率是一个正数，而$$\\\alpha\\$$也是一个正数，这时候$$\\\alpha\frac{d}{d\theta_1}J(\theta_1)\\$$ 就是一个正数，$$\\\theta_1\\$$更新为$$\\(\theta_1 - 一个正数)\\$$，所以$$\\\theta_1\\$$是减小的。下一个点在初始点的左侧，这样，梯度下降将逐渐接近，最终达到最低点。所以梯度下降到目前为止似乎是在做正确的事情。
+![](/assets/gradient_descent8.png)
 
+如果初始点选取在曲线最低点的左边，那斜率将是一个负数，此时$$\\\theta_1 - \alpha\frac{d}{d\theta_1}J(\theta_1)\\$$ 是增大的。梯度下降将向右逐渐逼近最低点。
+   以上就是导数项的意义，下面看学习速率α。
 
+   如果α太小，乘积将会很小，每次会以一个很小的值更新$$\\\theta_1\\$$。相当于迈出的步伐将会很小，它会需要很多步才能达到最低点，这会移动得非常慢。如果α太大，梯度下降算法可能会越过最低点，无法收敛，甚至会导致发散。
+![](/assets/gradient_descent9.png)
+
+   来看一下为什么α即使保持不变，梯度下降算法也能够逐渐接近最低点，而不会越过。在接近最低点的过程中，斜率将不断变小，逐渐降低为0，此时它和α的技逐渐变小。也就是说在靠近最低点的过程中，步子会越来越小，指导最低点时，变为原地踏步。而不会越过最低点。梯度下降算法可以用于最小化任何代价函数，而不仅是线性误差函数的最小化。
+
+##### 梯度下降算法的应用
+> Gradient descent algorathm
+
+repeat until convergence {
+$$\\\begin{gather}
+\theta_j := \theta_j - \alpha\frac{\partial}{\partial\theta_j} J(\theta0, \theta1) \qquad   (for\quad  j = 0\quad and\quad j = 1)
+\end{gather}\\$$
+}
+
+> Linear regression model
+
+$$\\\begin{gather*} 
+
+h_\theta(x) = \theta_0 + \theta_1x
+
+\end{gather*}\\$$
+$$\\\begin{gather*} 
+
+J(\theta)=\frac1{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y{(i)})^2
+
+\end{gather*}\\$$
+
+梯度下降算法和平方误差函数相结合，就是要使用梯度下降算法来最小化平方误差函数。为了使梯度下降，为了写这段代码。我们需要的关键项是这里这个微分项，
