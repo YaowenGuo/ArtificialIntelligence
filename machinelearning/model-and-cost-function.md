@@ -107,7 +107,7 @@ Outline:
 ##### Gradient descent algorithm
 repeat until convergence {
 $$\\\begin{gather}
-\theta_j := \theta_j - \alpha\frac{\partial}{\partial\theta_j} J(\theta0, \theta1) \qquad   (for\quad  j = 0\quad and\quad j = 1)
+\theta_j := \theta_j - \alpha\frac{\partial}{\partial\theta_j} J(\theta_0, \theta_1) \qquad   (for\quad  j = 0\quad and\quad j = 1)
 \end{gather}\\$$
 }
 
@@ -119,9 +119,9 @@ $$\\\begin{gather}
 - 在梯度下降过程中，需要同时更新$$\\\theta_0, \theta_1\\$$。这意味着在计算中需要这样计算：
 
 $$\\\begin{gather}
-temp0 := \theta_0 - \alpha\frac{\partial}{\partial\theta_0} J(\theta0, \theta1) \\
+temp0 := \theta_0 - \alpha\frac{\partial}{\partial\theta_0} J(\theta_0, \theta_1) \\
 
-temp1 := \theta_1 - \alpha\frac{\partial}{\partial\theta_1} J(\theta0, \theta1)\\
+temp1 := \theta_1 - \alpha\frac{\partial}{\partial\theta_1} J(\theta_0, \theta_1)\\
 
 \theta_0 := temp0 \\
 
@@ -131,11 +131,11 @@ temp1 := \theta_1 - \alpha\frac{\partial}{\partial\theta_1} J(\theta0, \theta1)\
 
 而不是
 $$\\\begin{gather}
-temp0 := \theta_0 - \alpha\frac{\partial}{\partial\theta_0} J(\theta0, \theta1) \\
+temp0 := \theta_0 - \alpha\frac{\partial}{\partial\theta_0} J(\theta_0, \theta_1) \\
 
 \theta_0 := temp0 \\
 
-temp1 := \theta_1 - \alpha\frac{\partial}{\partial\theta_1} J(\theta0, \theta1)\\
+temp1 := \theta_1 - \alpha\frac{\partial}{\partial\theta_1} J(\theta_0, \theta_1)\\
 
 \theta_1 := temp1
 
@@ -165,11 +165,13 @@ temp1 := \theta_1 - \alpha\frac{\partial}{\partial\theta_1} J(\theta0, \theta1)\
    来看一下为什么α即使保持不变，梯度下降算法也能够逐渐接近最低点，而不会越过。在接近最低点的过程中，斜率将不断变小，逐渐降低为0，此时它和α的技逐渐变小。也就是说在靠近最低点的过程中，步子会越来越小，指导最低点时，变为原地踏步。而不会越过最低点。梯度下降算法可以用于最小化任何代价函数，而不仅是线性误差函数的最小化。
 
 ##### 梯度下降算法的应用
+接下来将把梯度下降算法和线性函数相结合，得出一个用于线性误差函数的算法，或者拟合数据的拟合数据的直线函数。
+这是直线学到的梯度下降算法和线性回归模型，以及平方误差函数。
 > Gradient descent algorathm
 
 repeat until convergence {
 $$\\\begin{gather}
-\theta_j := \theta_j - \alpha\frac{\partial}{\partial\theta_j} J(\theta0, \theta1) \qquad   (for\quad  j = 0\quad and\quad j = 1)
+\theta_j := \theta_j - \alpha\frac{\partial}{\partial\theta_j} J(\theta_0, \theta_1) \qquad   (for\quad  j = 0\quad and\quad j = 1)
 \end{gather}\\$$
 }
 
@@ -182,8 +184,51 @@ h_\theta(x) = \theta_0 + \theta_1x
 \end{gather*}\\$$
 $$\\\begin{gather*} 
 
-J(\theta)=\frac1{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y{(i)})^2
+J(\theta_0, \theta_1)=\frac1{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2
 
 \end{gather*}\\$$
 
-梯度下降算法和平方误差函数相结合，就是要使用梯度下降算法来最小化平方误差函数。为了使梯度下降，为了写这段代码。我们需要的关键项是这里这个微分项，
+接下来要做的就是使用梯度下降算法来最小化平方误差函数。梯度下降公式的关键项是导数项，所以首先要弄明白导数项的意义，以及导数项中插入的函数$$\\J(\theta_0, \theta_1)\\$$。将函数J的公式带入导数项，推导出：
+
+$$\\\begin{gather}
+\frac{\partial}{\partial\theta_j} J(\theta_0, \theta_1) = \frac{\partial}{\partial\theta_j} \frac1{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2 \\
+= \frac{\partial}{\partial\theta_j} \frac1{2m}\sum_{i=1}^m(\theta_0 + \theta_1x^{(i)} - y^{(i)})^2
+
+
+\end{gather}\\$$
+
+由此，我们需要弄清楚j等于0和j等于1的两种情况的偏导数是什么。当j等于0时，化简公式：
+$$\\\begin{gather}
+j = 0 : \quad
+\frac{\partial}{\partial\theta_0} J(\theta_0, \theta_1) = \frac1{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})
+
+\end{gather}\\$$
+
+
+j等于1时化简公式：
+$$\\\begin{gather}
+j = 1 : \quad
+\frac{\partial}{\partial\theta_0} J(\theta_0, \theta_1) = \frac1{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x^{(i)}
+
+\end{gather}\\$$
+
+如果熟悉微分方程的偏导数，很容易进行上述推导。如果不熟悉也没关系，使用上面的推导结果，可以直接应用于计算。
+   熟悉了以上公式（函数j的斜率）之后，我们可以将其代入到梯度下降算法。
+repeat until convergence {
+$$\\\begin{gather}
+\theta_0 := \theta_0 - \alpha\frac1{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})
+\end{gather}\\$$
+
+$$\\\begin{gather}
+\theta_1 := \theta_1 - \alpha\frac1{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x^{(i)}
+
+\end{gather}\\$$
+}
+这就是线性回归的梯度下降，不断的重复过程过，它将收敛，θ0和θ1也会不断更新最终达到局部最小值。下面来看看梯度下降是如何工作的。 之前学到的梯度下降问题之一就是它可能容易受局部最优化的影响。根据你初始化它的位置，可以结束在不同的局部最优值。
+![](/assets/gradient_descent10.png)
+然而线性回归的平方误差函数通常是拱形的。就像这样
+![](/assets/gradient_descent11.png)
+这个技术术语叫做凸函数(convex function)。对于这种函数使用梯度下降算法，它总是能够获得全局最优解。
+   上面的讨论的算法有时也叫批梯度算法(batch gradient descent)。机器学习算法的研究者说他们并不擅长给算法命名，这个名字也是这样的。batch gradient descent 指的是，在梯度下降的每个步骤中，都在使用所有的训练样例。有时候梯度下降的其他版本不是批次版本。它们不需要看整个训练集，而是一次看看训练集的小部分。我们将在本课程的后面讨论这些版本。
+
+
