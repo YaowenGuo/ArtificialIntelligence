@@ -4,7 +4,7 @@
 * [MachineLearning](machinelearning.md)
   * [无监督学习](machinelearning/wu-jian-du-xue-xi.md)
   * [Model and Cost Function](machinelearning/model-and-cost-function.md)
-  * [Parameter Learning](machinelearning/parameter-learning.md)
+  * [Linear Algebra](machinelearning/parameter-learning.md)
 * [开发环境](kai-fa-huan-jing.md)
 * [附录](fu-lu.md)
   * [Numpy教程](fu-lu/numpyjiao-cheng.md)
@@ -35,4 +35,6 @@
     * [NumPy - 使用 Matplotlib 绘制直方图](fu-lu/ts-numpy-tut-zh-master/24.md)
     * [NumPy - IO](fu-lu/ts-numpy-tut-zh-master/25.md)
     * [NumPy - 实用资源](fu-lu/ts-numpy-tut-zh-master/26.md)
+  * [Octave](fu-lu/octave.md)
+    * [Matrix & Victor](fu-lu/octave/matrix-and-victor.md)
 
