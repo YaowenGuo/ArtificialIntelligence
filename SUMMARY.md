@@ -6,7 +6,7 @@
   * [Model and Cost Function](machinelearning/model-and-cost-function.md)
   * [Linear Algebra](machinelearning/parameter-learning.md)
   * [Multivariate Linear Regression](machinelearning/multivariate-linear-regression.md)
-* [开发环境](kai-fa-huan-jing.md)
+* [开发环境](develope-environment.md)
 * [附录](fu-lu.md)
   * [Numpy教程](fu-lu/numpyjiao-cheng.md)
     * [NumPy - 简介](fu-lu/ts-numpy-tut-zh-master/0.md)
@@ -38,4 +38,5 @@
     * [NumPy - 实用资源](fu-lu/ts-numpy-tut-zh-master/26.md)
   * [Octave](fu-lu/octave.md)
     * [Matrix & Victor](fu-lu/octave/matrix-and-victor.md)
-
+  * Scrapy
+    * [run](fu-lu/scrapy/run.md)

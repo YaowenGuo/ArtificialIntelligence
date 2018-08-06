@@ -54,11 +54,16 @@ $ python3
 如果没有任何反馈，说明已经安装成功了，否则，就是没有安装成功，则会收到如下反馈。
 
 ```
-Traceback (most recent call last): 
-   File "<pyshell#0>", line 1, in <module> 
-      import numpy 
+Traceback (most recent call last):
+   File "<pyshell#0>", line 1, in <module>
+      import numpy
 ImportError: No module named 'numpy'
 ```
 
+## Matplotlib
 
+2D 绘图领域的基础套件，它让使用者将数据图形化，并提供多样化的输出格式。
 
+## pandas
+
+pandas 是基于 Numpy 开发的住啊们用于数据分析的开源 Python 库。
